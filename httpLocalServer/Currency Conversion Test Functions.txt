@@ -1,0 +1,13 @@
+Test Functions in Currency Conversion
+-------------------------------------
+$ grep -R Test . | grep func
+./exchangeRateLib/init_test.go:/*       Create a Test Init() function to set Environment Variables, etc. ( see OTP )
+./exchangeRateLib/init_test.go:func TestManualInit( t *testing.T ) {
+./exchangeRateLib/init_test.go:func TestRetrieveCountryCurrency ( t *testing.T ) {
+./rest/handlers_test.go:func TestGetCountries( t *testing.T ) {
+./rest/handlers_test.go:func TestGetCountryCurrency( t *testing.T ) {
+./rest/handlers_test.go:func TestCompareRates( t *testing.T ) {
+./rest/handlers_test.go:func TestConvertValue( t *testing.T ) {
+./rest/helperFunc_test.go:func TestIsServiceStillLoading( t *testing.T ) {
+./rest/helperFunc_test.go:func TestJsonBuilder ( t *testing.T ) {
+./UnitTest.currency:Test the one-line functions ( ret = a / b ) with boundary conditions ( div by zero, map index out of bounds or invalid, etc. )

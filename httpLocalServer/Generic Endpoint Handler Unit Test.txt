@@ -1,0 +1,32 @@
+Handler Unit Testing
+
+Handler function
+Endpoint
+
+Expected Status Code
+Valid Response Body
+Request
+Request Type
+
+
+Logic of Handler Test
+
+Hit Endpoint with Request
+Check for Expected Status Code
+Check for expected response body ( for a GET )
+
+What about any further complexity in the handler function?
+Could something like this encourage simplicity of the Handler Function itself?
+Is that a good thing?
+
+Current Conversion Handlers
+---------------------------
+$ grep -R ResponseWriter . | grep -v UnitTest | grep -v _test.go
+./rest/handlers.go:func index(w http.ResponseWriter, r *http.Request) {
+./rest/handlers.go:func getCountries(w http.ResponseWriter, r *http.Request) {
+./rest/handlers.go:func getCurrencies(w http.ResponseWriter, r *http.Request) {
+./rest/handlers.go:func getCountryCurrency(w http.ResponseWriter, r *http.Request) {
+./rest/handlers.go:func compareRates(w http.ResponseWriter, r *http.Request) {
+./rest/handlers.go:func convertValue(w http.ResponseWriter, r *http.Request) {
+./rest/helperFunc.go:func isServiceStillLoading( w http.ResponseWriter ) bool {
+./rest/helperFunc.go:func jsonBuilder (w http.ResponseWriter, message interface{} ) {
