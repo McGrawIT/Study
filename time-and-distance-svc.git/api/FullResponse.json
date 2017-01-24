@@ -1,0 +1,1894 @@
+  {
+    "AirportCode": "BOS",
+    "RouteID": "T5-G16",
+    "RouteName": "Multi-Asset Route",
+    "RouteDefaults": {
+      "AssetLocation": {
+        "Lat": 17,
+        "Long": 12,
+        "Height": 11
+      },
+      "RouteStart": {
+        "Lat": 7,
+        "Long": 16,
+        "Height": 11
+      },
+      "RouteEnd": {
+        "Lat": 17,
+        "Long": 9,
+        "Height": 11
+      },
+      "Destination": {
+        "Lat": 13,
+        "Long": 14,
+        "Height": 0
+      },
+      "Speed": 30
+    },
+    "NodeDefaults": {
+      "MaxSpeed": 40,
+      "MaxHeight": 18,
+      "MaxWeight": 5000,
+      "MaxWidth": 24,
+      "NodeDelays": null
+    },
+    "RouteReferencePoint": {
+      "Lat": 0,
+      "Long": 0,
+      "Height": 0
+    },
+    "TheRoute": {
+      "Start": {
+        "Lat": 4,
+        "Long": 12,
+        "Height": 0
+      },
+      "End": {
+        "Lat": 6,
+        "Long": 6,
+        "Height": 0
+      },
+      "Length": 86.15975761210645,
+      "GeoLength": 9462.86627234726,
+      "TotalNodes": 13,
+      "Ordered": [
+        {
+          "RouteNode": {
+            "Lat": 4,
+            "Long": 12,
+            "Height": 0
+          },
+          "DistanceToNextNode": 5,
+          "GeoDistanceToNextNode": 554.2956701745429
+        },
+        {
+          "RouteNode": {
+            "Lat": 7,
+            "Long": 16,
+            "Height": 0
+          },
+          "DistanceToNextNode": 4,
+          "GeoDistanceToNextNode": 441.4630539327303
+        },
+        {
+          "RouteNode": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "DistanceToNextNode": 6.324555320336759,
+          "GeoDistanceToNextNode": 702.1631348424489
+        },
+        {
+          "RouteNode": {
+            "Lat": 13,
+            "Long": 22,
+            "Height": 0
+          },
+          "DistanceToNextNode": 8.94427190999916,
+          "GeoDistanceToNextNode": 985.8252262608476
+        },
+        {
+          "RouteNode": {
+            "Lat": 21,
+            "Long": 18,
+            "Height": 0
+          },
+          "DistanceToNextNode": 5.656854249492381,
+          "GeoDistanceToNextNode": 612.0327927501596
+        },
+        {
+          "RouteNode": {
+            "Lat": 17,
+            "Long": 14,
+            "Height": 0
+          },
+          "DistanceToNextNode": 4,
+          "GeoDistanceToNextNode": 444.77970657823494
+        },
+        {
+          "RouteNode": {
+            "Lat": 13,
+            "Long": 14,
+            "Height": 0
+          },
+          "DistanceToNextNode": 6.4031242374328485,
+          "GeoDistanceToNextNode": 697.1913702476268
+        },
+        {
+          "RouteNode": {
+            "Lat": 17,
+            "Long": 9,
+            "Height": 0
+          },
+          "DistanceToNextNode": 9,
+          "GeoDistanceToNextNode": 1000.7543398010288
+        },
+        {
+          "RouteNode": {
+            "Lat": 26,
+            "Long": 9,
+            "Height": 0
+          },
+          "DistanceToNextNode": 6,
+          "GeoDistanceToNextNode": 599.5953295987872
+        },
+        {
+          "RouteNode": {
+            "Lat": 26,
+            "Long": 3,
+            "Height": 0
+          },
+          "DistanceToNextNode": 17,
+          "GeoDistanceToNextNode": 1890.3137529574988
+        },
+        {
+          "RouteNode": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "DistanceToNextNode": 5.830951894845301,
+          "GeoDistanceToNextNode": 644.8924820468839
+        },
+        {
+          "RouteNode": {
+            "Lat": 14,
+            "Long": 6,
+            "Height": 0
+          },
+          "DistanceToNextNode": 8,
+          "GeoDistanceToNextNode": 889.5594131564699
+        },
+        {
+          "RouteNode": {
+            "Lat": 6,
+            "Long": 6,
+            "Height": 0
+          },
+          "DistanceToNextNode": 0,
+          "GeoDistanceToNextNode": 0
+        }
+      ]
+    },
+    "RouteStart": {
+      "Lat": 4,
+      "Long": 12,
+      "Height": 0
+    },
+    "RouteEnd": {
+      "Lat": 6,
+      "Long": 6,
+      "Height": 0
+    },
+    "RouteLength": 86.15975761210645,
+    "GeoLength": 9462.86627234726,
+    "OffRoute": {
+      "Lat": 0,
+      "Long": 0,
+      "Height": 0
+    },
+    "RouteTimes": null,
+    "RouteNodes": [
+      {
+        "NodeType": "Gate",
+        "NodeLocation": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 0,
+        "DistanceToPreviousGeoNode": 0,
+        "NodeDelayLeft": 1200,
+        "RightNode": {
+          "Lat": 7,
+          "Long": 16,
+          "Height": 0
+        },
+        "DistanceToNextNode": 5,
+        "DistanceToNextGeoNode": 554.2956701745429,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 0,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 86.15975761210645
+      },
+      {
+        "NodeType": "Intersection",
+        "NodeLocation": {
+          "Lat": 7,
+          "Long": 16,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 5,
+        "DistanceToPreviousGeoNode": 554.2956701745429,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "DistanceToNextNode": 4,
+        "DistanceToNextGeoNode": 441.4630539327303,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 5,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 81.15975761210645
+      },
+      {
+        "NodeType": "Bridge",
+        "NodeLocation": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 7,
+          "Long": 16,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 4,
+        "DistanceToPreviousGeoNode": 441.4630539327303,
+        "NodeDelayLeft": 12,
+        "RightNode": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "DistanceToNextNode": 6.324555320336759,
+        "DistanceToNextGeoNode": 702.1631348424489,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 9,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 77.15975761210645
+      },
+      {
+        "NodeType": "Yield",
+        "NodeLocation": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 6.324555320336759,
+        "DistanceToPreviousGeoNode": 702.1631348424489,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "DistanceToNextNode": 8.94427190999916,
+        "DistanceToNextGeoNode": 985.8252262608476,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 15.32455532033676,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 70.83520229176969
+      },
+      {
+        "NodeType": "Taxi Way Left",
+        "NodeLocation": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 8.94427190999916,
+        "DistanceToPreviousGeoNode": 985.8252262608476,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 17,
+          "Long": 14,
+          "Height": 0
+        },
+        "DistanceToNextNode": 5.656854249492381,
+        "DistanceToNextGeoNode": 612.0327927501596,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 24.26882723033592,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 61.89093038177053
+      },
+      {
+        "NodeType": "Baggage, Concourse A",
+        "NodeLocation": {
+          "Lat": 17,
+          "Long": 14,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 5.656854249492381,
+        "DistanceToPreviousGeoNode": 612.0327927501596,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 13,
+          "Long": 14,
+          "Height": 0
+        },
+        "DistanceToNextNode": 4,
+        "DistanceToNextGeoNode": 444.77970657823494,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 29.9256814798283,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 56.23407613227815
+      },
+      {
+        "NodeType": "Fueling Station",
+        "NodeLocation": {
+          "Lat": 13,
+          "Long": 14,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 17,
+          "Long": 14,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 4,
+        "DistanceToPreviousGeoNode": 444.77970657823494,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToNextNode": 6.4031242374328485,
+        "DistanceToNextGeoNode": 697.1913702476268,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 33.9256814798283,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 52.23407613227815
+      },
+      {
+        "NodeType": "Vehicle Maintenance",
+        "NodeLocation": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 13,
+          "Long": 14,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 6.4031242374328485,
+        "DistanceToPreviousGeoNode": 697.1913702476268,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToNextNode": 9,
+        "DistanceToNextGeoNode": 1000.7543398010288,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 40.32880571726115,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 45.8309518948453
+      },
+      {
+        "NodeType": "Concourse B Tunnel",
+        "NodeLocation": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 9,
+        "DistanceToPreviousGeoNode": 1000.7543398010288,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 26,
+          "Long": 3,
+          "Height": 0
+        },
+        "DistanceToNextNode": 6,
+        "DistanceToNextGeoNode": 599.5953295987872,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 49.32880571726115,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 36.8309518948453
+      },
+      {
+        "NodeType": "",
+        "NodeLocation": {
+          "Lat": 26,
+          "Long": 3,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 6,
+        "DistanceToPreviousGeoNode": 599.5953295987872,
+        "NodeDelayLeft": 120,
+        "RightNode": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "DistanceToNextNode": 17,
+        "DistanceToNextGeoNode": 1890.3137529574988,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 55.32880571726115,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 30.8309518948453
+      },
+      {
+        "NodeType": "",
+        "NodeLocation": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 35,
+        "LeftNode": {
+          "Lat": 26,
+          "Long": 3,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 17,
+        "DistanceToPreviousGeoNode": 1890.3137529574988,
+        "NodeDelayLeft": 1200,
+        "RightNode": {
+          "Lat": 14,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToNextNode": 5.830951894845301,
+        "DistanceToNextGeoNode": 644.8924820468839,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 72.32880571726115,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 13.8309518948453
+      },
+      {
+        "NodeType": "West Terminal",
+        "NodeLocation": {
+          "Lat": 14,
+          "Long": 6,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 20,
+        "LeftNode": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 5.830951894845301,
+        "DistanceToPreviousGeoNode": 644.8924820468839,
+        "NodeDelayLeft": 5,
+        "RightNode": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToNextNode": 8,
+        "DistanceToNextGeoNode": 889.5594131564699,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 78.15975761210645,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 8
+      },
+      {
+        "NodeType": "",
+        "NodeLocation": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "Zones": 0,
+        "TraVerseMinimum": 0,
+        "LeftNode": {
+          "Lat": 14,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToPreviousNode": 8,
+        "DistanceToPreviousGeoNode": 889.5594131564699,
+        "NodeDelayLeft": 0,
+        "RightNode": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToNextNode": 0,
+        "DistanceToNextGeoNode": 0,
+        "NodeDelayRight": 0,
+        "RouteStart": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "DistanceFromRouteStart": 86.15975761210645,
+        "RouteEnd": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "DistanceToRouteEnd": 0
+      }
+    ],
+    "Assets": [
+      {
+        "AssetID": "HMH 3305",
+        "AssetType": "Honda Accord",
+        "Speed": 20,
+        "Weight": 500,
+        "Height": 12,
+        "Width": 16,
+        "AssetLocation": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "Destination": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "RouteToDestination": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "RouteLegs": [
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 22,
+                  "Long": 7,
+                  "Height": 11
+                },
+                "ToNode": {
+                  "Lat": 26,
+                  "Long": 9,
+                  "Height": 0
+                }
+              },
+              "Length": 4.47213595499958,
+              "Time": 0.223606797749979
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 22,
+                  "Long": 7,
+                  "Height": 11
+                },
+                "ToNode": {
+                  "Lat": 26,
+                  "Long": 3,
+                  "Height": 0
+                }
+              },
+              "Length": 6,
+              "Time": 0.3
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 26,
+                  "Long": 3,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 9,
+                  "Long": 3,
+                  "Height": 0
+                }
+              },
+              "Length": 17,
+              "Time": 0.3
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 9,
+                  "Long": 3,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 14,
+                  "Long": 6,
+                  "Height": 0
+                }
+              },
+              "Length": 5.830951894845301,
+              "Time": 0.3
+            }
+          ],
+          "Duration": 1.123606797749979,
+          "Length": 33.30308784984488
+        },
+        "RouteLength": 33.30308784984488,
+        "RouteDuration": 1.123606797749979,
+        "ValidZones": 3,
+        "AwayFromNodeMax": 50,
+        "DistanceToNodes": null,
+        "ClosestNode": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToClosestNode": 4.47213595499958,
+        "NextClosestNode": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "DistanceToNextClosest": 5.385164807134504,
+        "AssetToRouteLeg": 0,
+        "LegSplitRightSide": 0,
+        "LegSplitLeftSide": 0
+      },
+      {
+        "AssetID": "HMH 3305",
+        "AssetType": "Honda Accord",
+        "Speed": 45,
+        "Weight": 500,
+        "Height": 12,
+        "Width": 16,
+        "AssetLocation": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "Destination": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "RouteToDestination": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "RouteLegs": [
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 20,
+                  "Long": 22,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 21,
+                  "Long": 18,
+                  "Height": 0
+                }
+              },
+              "Length": 4.123105625617661,
+              "Time": 0.09162456945817024
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 20,
+                  "Long": 22,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 13,
+                  "Long": 22,
+                  "Height": 0
+                }
+              },
+              "Length": 8.94427190999916,
+              "Time": 0.1987615979999813
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 13,
+                  "Long": 22,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 7,
+                  "Long": 20,
+                  "Height": 0
+                }
+              },
+              "Length": 6.324555320336759,
+              "Time": 0.1987615979999813
+            },
+            {
+              "Leg": {
+                "FromNode": {
+                  "Lat": 7,
+                  "Long": 20,
+                  "Height": 0
+                },
+                "ToNode": {
+                  "Lat": 7,
+                  "Long": 16,
+                  "Height": 0
+                }
+              },
+              "Length": 4,
+              "Time": 0.1987615979999813
+            }
+          ],
+          "Duration": 0.6879093634581142,
+          "Length": 23.39193285595358
+        },
+        "RouteLength": 23.39193285595358,
+        "RouteDuration": 0.6879093634581142,
+        "ValidZones": 3,
+        "AwayFromNodeMax": 50,
+        "DistanceToNodes": null,
+        "ClosestNode": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "DistanceToClosestNode": 4.123105625617661,
+        "NextClosestNode": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "DistanceToNextClosest": 7,
+        "AssetToRouteLeg": 0,
+        "LegSplitRightSide": 0,
+        "LegSplitLeftSide": 0
+      }
+    ],
+    "NodeAssetTimes": [
+      {
+        "Node": {
+          "Lat": 7,
+          "Long": 16,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 14.317821063276353,
+          "AssetToNodeTime": 0.3181738014061412,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.1111111111111111,
+          "NodeToRightNodeTime": 0.08888888888888889,
+          "NodeToLeftEndTime": 0.1111111111111111,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.4292849125172523,
+          "AssetToRightEndTime": 0.3181738014061412
+        }
+      },
+      {
+        "Node": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 11.045361017187261,
+          "AssetToNodeTime": 0.552268050859363,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.447213595499958,
+          "NodeToRightNodeTime": 0.282842712474619,
+          "NodeToLeftEndTime": 1.213441361516796,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.7657094123761592,
+          "AssetToRightEndTime": 0.552268050859363
+        }
+      },
+      {
+        "Node": {
+          "Lat": 17,
+          "Long": 14,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 8.602325267042627,
+          "AssetToNodeTime": 0.4301162633521313,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.282842712474619,
+          "NodeToRightNodeTime": 0.2,
+          "NodeToLeftEndTime": 1.496284073991415,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.9264003373435463,
+          "AssetToRightEndTime": 0.4301162633521313
+        }
+      },
+      {
+        "Node": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 13.341664064126334,
+          "AssetToNodeTime": 0.2964814236472519,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.14229164972072997,
+          "NodeToRightNodeTime": 0.2,
+          "NodeToLeftEndTime": 0.8961956826058033,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.1926771062530552,
+          "AssetToRightEndTime": 0.2964814236472519
+        }
+      },
+      {
+        "Node": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 4.47213595499958,
+          "AssetToNodeTime": 0.223606797749979,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.45,
+          "NodeToRightNodeTime": 0.3,
+          "NodeToLeftEndTime": 2.466440285863057,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.6900470836130363,
+          "AssetToRightEndTime": 0.223606797749979
+        }
+      },
+      {
+        "Node": {
+          "Lat": 17,
+          "Long": 14,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 8.54400374531753,
+          "AssetToNodeTime": 0.18986674989594512,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.1257078722109418,
+          "NodeToRightNodeTime": 0.08888888888888889,
+          "NodeToLeftEndTime": 0.6650151439961844,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.8548818938921295,
+          "AssetToRightEndTime": 0.18986674989594512
+        }
+      },
+      {
+        "Node": {
+          "Lat": 13,
+          "Long": 14,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 11.40175425099138,
+          "AssetToNodeTime": 0.5700877125495689,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.2,
+          "NodeToRightNodeTime": 0.32015621187164245,
+          "NodeToLeftEndTime": 1.696284073991415,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.266371786540984,
+          "AssetToRightEndTime": 0.5700877125495689
+        }
+      },
+      {
+        "Node": {
+          "Lat": 17,
+          "Long": 9,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 5.385164807134504,
+          "AssetToNodeTime": 0.2692582403567252,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.32015621187164245,
+          "NodeToRightNodeTime": 0.45,
+          "NodeToLeftEndTime": 2.0164402858630575,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.2856985262197824,
+          "AssetToRightEndTime": 0.2692582403567252
+        }
+      },
+      {
+        "Node": {
+          "Lat": 26,
+          "Long": 9,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 14.317821063276353,
+          "AssetToNodeTime": 0.3181738014061412,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.2,
+          "NodeToRightNodeTime": 0.13333333333333333,
+          "NodeToLeftEndTime": 1.0961956826058032,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.4143694840119445,
+          "AssetToRightEndTime": 0.3181738014061412
+        }
+      },
+      {
+        "Node": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 21.95449840010015,
+          "AssetToNodeTime": 0.48787774222444774,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.37777777777777777,
+          "NodeToRightNodeTime": 0.12957670877434002,
+          "NodeToLeftEndTime": 1.6073067937169143,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.095184535941362,
+          "AssetToRightEndTime": 0.48787774222444774
+        }
+      },
+      {
+        "Node": {
+          "Lat": 26,
+          "Long": 3,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 5.656854249492381,
+          "AssetToNodeTime": 0.282842712474619,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.3,
+          "NodeToRightNodeTime": 0.85,
+          "NodeToLeftEndTime": 2.7664402858630575,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 3.0492829983376764,
+          "AssetToRightEndTime": 0.282842712474619
+        }
+      },
+      {
+        "Node": {
+          "Lat": 26,
+          "Long": 3,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 19.924858845171276,
+          "AssetToNodeTime": 0.44277464100380615,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.13333333333333333,
+          "NodeToRightNodeTime": 0.37777777777777777,
+          "NodeToLeftEndTime": 1.2295290159391365,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.6723036569429426,
+          "AssetToRightEndTime": 0.44277464100380615
+        }
+      },
+      {
+        "Node": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 18.681541692269406,
+          "AssetToNodeTime": 0.9340770846134703,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0,
+          "NodeToRightNodeTime": 0.25,
+          "NodeToLeftEndTime": 0,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.9340770846134703,
+          "AssetToRightEndTime": 0.9340770846134703
+        }
+      },
+      {
+        "Node": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 19.849433241279208,
+          "AssetToNodeTime": 0.9924716620639604,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.2,
+          "NodeToRightNodeTime": 0.31622776601683794,
+          "NodeToLeftEndTime": 0.45,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.4424716620639604,
+          "AssetToRightEndTime": 0.9924716620639604
+        }
+      },
+      {
+        "Node": {
+          "Lat": 7,
+          "Long": 20,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 13.152946437965905,
+          "AssetToNodeTime": 0.2922876986214646,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.08888888888888889,
+          "NodeToRightNodeTime": 0.1405456737852613,
+          "NodeToLeftEndTime": 0.2,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.4922876986214646,
+          "AssetToRightEndTime": 0.2922876986214646
+        }
+      },
+      {
+        "Node": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 7,
+          "AssetToNodeTime": 0.15555555555555556,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.1405456737852613,
+          "NodeToRightNodeTime": 0.1987615979999813,
+          "NodeToLeftEndTime": 0.34054567378526135,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.4961012293408169,
+          "AssetToRightEndTime": 0.15555555555555556
+        }
+      },
+      {
+        "Node": {
+          "Lat": 21,
+          "Long": 18,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 4.123105625617661,
+          "AssetToNodeTime": 0.09162456945817024,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.1987615979999813,
+          "NodeToRightNodeTime": 0.1257078722109418,
+          "NodeToLeftEndTime": 0.5393072717852426,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.6309318412434128,
+          "AssetToRightEndTime": 0.09162456945817024
+        }
+      },
+      {
+        "Node": {
+          "Lat": 13,
+          "Long": 14,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 10.63014581273465,
+          "AssetToNodeTime": 0.23622546250521445,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.08888888888888889,
+          "NodeToRightNodeTime": 0.14229164972072997,
+          "NodeToLeftEndTime": 0.7539040328850733,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.9901294953902878,
+          "AssetToRightEndTime": 0.23622546250521445
+        }
+      },
+      {
+        "Node": {
+          "Lat": 9,
+          "Long": 3,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 13.601470508735444,
+          "AssetToNodeTime": 0.6800735254367722,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.85,
+          "NodeToRightNodeTime": 0.29154759474226505,
+          "NodeToLeftEndTime": 3.6164402858630575,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 4.29651381129983,
+          "AssetToRightEndTime": 0.6800735254367722
+        }
+      },
+      {
+        "Node": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 21.2602916254693,
+          "AssetToNodeTime": 0.4724509250104289,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.17777777777777778,
+          "NodeToRightNodeTime": 0,
+          "NodeToLeftEndTime": 1.9146612802690322,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.387112205279461,
+          "AssetToRightEndTime": 0.4724509250104289
+        }
+      },
+      {
+        "Node": {
+          "Lat": 4,
+          "Long": 12,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 18.867962264113206,
+          "AssetToNodeTime": 0.4192880503136268,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0,
+          "NodeToRightNodeTime": 0.1111111111111111,
+          "NodeToLeftEndTime": 0,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 0.4192880503136268,
+          "AssetToRightEndTime": 0.4192880503136268
+        }
+      },
+      {
+        "Node": {
+          "Lat": 7,
+          "Long": 16,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 17.4928556845359,
+          "AssetToNodeTime": 0.874642784226795,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.25,
+          "NodeToRightNodeTime": 0.2,
+          "NodeToLeftEndTime": 0.25,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.124642784226795,
+          "AssetToRightEndTime": 0.874642784226795
+        }
+      },
+      {
+        "Node": {
+          "Lat": 13,
+          "Long": 22,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 17.4928556845359,
+          "AssetToNodeTime": 0.874642784226795,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.31622776601683794,
+          "NodeToRightNodeTime": 0.447213595499958,
+          "NodeToLeftEndTime": 0.766227766016838,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 1.640870550243633,
+          "AssetToRightEndTime": 0.874642784226795
+        }
+      },
+      {
+        "Node": {
+          "Lat": 14,
+          "Long": 6,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 8.06225774829855,
+          "AssetToNodeTime": 0.40311288741492746,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.29154759474226505,
+          "NodeToRightNodeTime": 0.4,
+          "NodeToLeftEndTime": 3.9079878806053223,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 4.31110076802025,
+          "AssetToRightEndTime": 0.40311288741492746
+        }
+      },
+      {
+        "Node": {
+          "Lat": 14,
+          "Long": 6,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 20,
+          "Long": 22,
+          "Height": 0
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "Speed": 45,
+          "AssetToNode": 17.08800749063506,
+          "AssetToNodeTime": 0.37973349979189025,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.12957670877434002,
+          "NodeToRightNodeTime": 0.17777777777777778,
+          "NodeToLeftEndTime": 1.7368835024912543,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 2.1166170022831445,
+          "AssetToRightEndTime": 0.37973349979189025
+        }
+      },
+      {
+        "Node": {
+          "Lat": 6,
+          "Long": 6,
+          "Height": 0
+        },
+        "Asset": {
+          "Lat": 22,
+          "Long": 7,
+          "Height": 11
+        },
+        "TimeDetail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "Speed": 20,
+          "AssetToNode": 16.0312195418814,
+          "AssetToNodeTime": 0.8015609770940699,
+          "TimeToDestination": 0,
+          "NodeToLeftNodeTime": 0.4,
+          "NodeToRightNodeTime": 0,
+          "NodeToLeftEndTime": 4.307987880605323,
+          "NodeToRightEndTime": 0,
+          "AssetToLeftEndTime": 5.109548857699393,
+          "AssetToRightEndTime": 0.8015609770940699
+        }
+      }
+    ],
+    "ClosestNodesByAsset": [
+      {
+        "ClosestNode": {
+          "Node": {
+            "Lat": 21,
+            "Long": 18,
+            "Height": 0
+          },
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          }
+        },
+        "Detail": {
+          "Asset": {
+            "Lat": 20,
+            "Long": 22,
+            "Height": 0
+          },
+          "ClosestNode": {
+            "Lat": 21,
+            "Long": 18,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 7,
+            "Long": 20,
+            "Height": 0
+          },
+          "ToClosestNode": 4.123105625617661,
+          "ToDestination": 0,
+          "ToLeftEnd": 24.26882723033592,
+          "ToRightEnd": 0,
+          "TimeToClosestNode": 0.09162456945817024,
+          "TimeToDestination": 0,
+          "TimeToLeftEnd": 0.5393072717852426,
+          "TimeToRightEnd": 0
+        }
+      },
+      {
+        "ClosestNode": {
+          "Node": {
+            "Lat": 26,
+            "Long": 9,
+            "Height": 0
+          },
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          }
+        },
+        "Detail": {
+          "Asset": {
+            "Lat": 22,
+            "Long": 7,
+            "Height": 11
+          },
+          "ClosestNode": {
+            "Lat": 26,
+            "Long": 9,
+            "Height": 0
+          },
+          "Destination": {
+            "Lat": 9,
+            "Long": 3,
+            "Height": 0
+          },
+          "ToClosestNode": 4.47213595499958,
+          "ToDestination": 0,
+          "ToLeftEnd": 49.32880571726115,
+          "ToRightEnd": 0,
+          "TimeToClosestNode": 0.223606797749979,
+          "TimeToDestination": 0,
+          "TimeToLeftEnd": 2.466440285863057,
+          "TimeToRightEnd": 0
+        }
+      }
+    ]
+  }

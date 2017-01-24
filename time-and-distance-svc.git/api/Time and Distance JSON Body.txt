@@ -1,0 +1,107 @@
+
+Comment POST Body ( /Distance and /Time endpoints )
+
+
+{  "Route": {
+	"ReferencePoint": { "Lat": 0, "Long": 0, "Height": 0 },
+	"MaxRouteVelocity": 34,
+	"NodeDelays": 10
+   },
+   
+   "Legs": [
+   { 
+	"LeftNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	},
+	"RightNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	},
+	"MaxLegVelocity": 76,
+	"MinumumTraverseTime": 20,
+	"DirectionLeft": true,
+	"DirectionRight": true
+   } ],
+   "Assets": [
+   {
+	"LeftNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	},
+	"RightNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	},
+	"Velocity": 30
+   } ],
+   "Destination": { 
+
+	"LeftNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	},
+	"RightNode": { 
+		"Lat": 3, 
+		"Long": 38, 
+		"Height": 10,
+		"Delay": 20
+	}
+   }
+} 
+
+
+
+
+type	RouteResults	struct {
+
+	RouteStart		Location	`json:"RouteStart"`
+	RouteEnd		Location	`json:"RouteEnd"`
+	OrderedRoute		[]Edge		`json:"OrderedRoute"`
+	RouteDistance		int		`json:"RouteDistance"`
+
+	AssetOrigin		Location	`json:"AssetOrigin"`
+	AssetDestination	Location	`json:"AssetDestination"`
+	AssetRoute		[]Edge		`json:"AssetRoute"`
+	AverageVelocity		int		`json:"AverageVelocity"`
+
+	AssetRouteTime		time.Duration	`json:"AssetRouteTime"`
+	AssetRouteDistance	int		`json:"AssetRouteDistance"`
+}
+
+
+
+========================================================================
+
+
+
+
+
+ "Location": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number"
+                },
+                "long": {
+                    "type": "number"
+                },
+                "height": {
+                    "type": "number"
+                }
+            }
+        }
+
+
+
+

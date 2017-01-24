@@ -1,0 +1,64 @@
+
+[
+  {
+    "GeoStartLocation": {
+      "DMS": {
+        "Latitude": {
+          "Degrees": 88,
+          "Minutes": 62,
+          "Seconds": 71,
+          "Direction": "N"
+        },
+        "Longitude": {
+          "Degrees": 12,
+          "Minutes": 77,
+          "Seconds": 11,
+          "Direction": "W"
+        }
+      },
+      "Decimal": {
+        "X": 46.664037,
+        "Y": -8.077022
+      }
+    },
+    "GeoEndLocation": {
+      "DMS": {
+        "Latitude": {
+          "Degrees": 30,
+          "Minutes": 8,
+          "Seconds": 18,
+          "Direction": "N"
+        },
+        "Longitude": {
+          "Degrees": 97,
+          "Minutes": 48,
+          "Seconds": 0,
+          "Direction": "W"
+        }
+      },
+      "Decimal": {
+        "X": 30.138333333333332,
+        "Y": -97.8
+      }
+    },
+    "GeoSegmentDistance": 7606.172889461396,
+    "GeoSegmentETA": 85.93194030341664,
+    "LineStart": {
+      "X": 15,
+      "Y": 33
+    },
+    "LineEnd": {
+      "X": 33,
+      "Y": 11
+    },
+    "LineDistance": 28.42534080710379,
+    "LineSegmentETA": 0.516824378310978,
+    "OriginalValue": 91,
+    "ConvertFrom": "miles",
+    "ConvertTo": "yards",
+    "ConvertedValue": 160160,
+    "ConvertDistanceOnly": 0,
+    "Speed": 96800
+  }
+]
+

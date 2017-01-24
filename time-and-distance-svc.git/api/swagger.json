@@ -1,0 +1,536 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Time and Distance Service API",
+        "description": "More info on developing this file found at https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#securityDefinitions"
+    },
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+      "iairport-auth": {
+          "type": "oauth2",
+          "authorizationUrl": "?",
+          "flow": "implicit",
+          "scopes": {
+              "write:values": "modify values",
+              "read:values": "read values"
+          }
+      }
+    },
+    "paths": {
+        "/info": {
+            "get": {
+                "description": "Gets run-time information about this service.",
+                "produces": [
+                    "text/plain",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ProcessInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/ping": {
+            "get": {
+                "description": "Validates that the service is running and responding to requests. It will also return the last time data was received.",
+                "produces": [
+                    "application/json",
+                    "text/plain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Endpoint Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/route/possible": {
+            "get": {
+                "description": "get list of possible routes starting at X and traveling to Y",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "asset-location",
+                        "in": "body",
+                        "description": "Asset location to get current zone for",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/RouteList"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/route/{route-id}": {
+            "get": {
+                "description": "get route information for Route Id {route-id}",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "route-id",
+                        "in": "path",
+                        "description": "Route Id to show information for",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/RouteInfo"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/route/config":{
+            "post": {
+                "description": "sets route configuration information",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "route-info",
+                        "in": "body",
+                        "required": true,
+                        "description": "Route list to configure",
+                        "schema": {
+                            "$ref": "#/definitions/RouteList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/zone/current": {
+            "get": {
+                "description": "get zone information for given location",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "asset-location",
+                        "in": "body",
+                        "description": "Asset location to get current zone for",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ZoneInfo"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/zone/{zone-id}": {
+            "get": {
+                "description": "get zone information for Zone Id {zone-id}",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone-id",
+                        "in": "path",
+                        "description": "Zone Id to show information for",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ZoneInfo"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/zone/config":{
+            "get": {
+                "description": "gets zone configuration information",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ZoneList"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "sets zone configuration information",
+                "security": [
+                    "iairport-auth": [
+                    "write:values",
+                    "read:values"
+                    ]
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant-id",
+                        "in": "header",
+                        "required": true,
+                        "description": "Airport Id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone-info",
+                        "in": "body",
+                        "required": true,
+                        "description": "Zone list to configure",
+                        "schema": {
+                            "$ref": "#/definitions/ZoneList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ProcessInfo": {
+            "type": "object",
+            "description": "This is used primarily for debugging so the data returned can change depending on the need. The data given below should be considered the minimum.",
+            "properties": {
+                "predix-space": {
+                    "type": "string"
+                },
+                "instance-no": {
+                    "type": "integer"
+                },
+                "uptime": {
+                    "type": "number"
+                },
+                "max-go-threads": {
+                    "type": "integer"
+                },
+                "bytesUsed": {
+                    "type": "number"
+                },
+                "bytesAvail": {
+                    "type": "number"
+                }
+            }
+        },
+        "ZoneList":{
+            "type":"array",
+            "items": {
+                "$ref": "#/definitions/ZoneInfo"
+            }
+        },
+        "ZoneInfo":{
+            "type": "object",
+            "properties": {
+                "zone-id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string",
+                    "enum": ["Utility", "Airport", "Terminal", "Gate"]
+                },
+                "area": {
+                    "$ref": "#/definitions/Area"
+                }
+            }
+        },
+        "RouteList":{
+            "type":"array",
+            "items": {
+                "$ref": "#/definitions/RouteInfo"
+            }
+        },
+        "RouteInfo":{
+            "type": "object",
+            "properties": {
+                "route-id": {
+                    "type": "string"
+                },
+                "route-type": {
+                    "type": "string",
+                    "enum": ["Primary", "Secondary"]
+                },
+                "origin": {
+                    "$ref": "#/definitions/Location"
+                },
+                "destination": {
+                    "$ref": "#/definitions/Location"
+                },
+                "legs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RouteLeg"
+                    }
+                }
+            }
+        },
+        "RouteLeg":{
+            "type": "object",
+            "properties": {
+                "seq_id": {
+                    "type": "integer"
+                },
+                "bidirectional": {
+                    "type": "boolean"
+                },
+                "avg_delay": {
+                    "type": "integer",
+                    "description": "Units are minutes"
+                },
+                "max_speed": {
+                    "type": "integer"
+                },
+                "deviation": {
+                    "type": "integer",
+                    "description": "Distance in which vehicle has to stay to be considered on-course"
+                },
+                "pt1": {
+                    "$ref": "#/definitions/Location"
+                },
+                "pt2": {
+                    "$ref": "#/definitions/Location"
+                }
+            }
+        },
+        "Area": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Location"
+            }
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number"
+                },
+                "long": {
+                    "type": "number"
+                },
+                "height": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

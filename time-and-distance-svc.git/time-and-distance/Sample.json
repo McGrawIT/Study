@@ -1,0 +1,77 @@
+
+
+{  "Segments": [
+  {
+    "LeftNode" : { "Lat": 4, "Long": 12, "Height": 0 },
+    "RightNode" : { "Lat": 7, "Long": 16, "Height": 0 },
+    "NodeDelay": 5,
+    "NodeType": "Gate",
+    "MinimumTraverse": 20,
+    "NodeBlockedDistance": 20,
+    "LeftIsNode": true,
+    "RightIsNode": true,
+    "LegInZones": 16,
+    "MaxAssetWeight": 500,
+    "MaxAssetHeight": 16,
+    "MaxAssetWidth": 12,
+    "MaximumSpeed": 100
+  },
+  {
+    "LeftNode" : { "Lat": 14, "Long": 6, "Height": 0 },
+    "RightNode" : { "Lat": 6, "Long": 6, "Height": 0 },
+    "NodeDelay": 5,
+    "NodeType": "West Terminal",
+    "MinimumTraverse": 20,
+    "NodeBlockedDistance": 20,
+    "MaximumSpeed": 75
+  }
+],
+
+  "Assets": [
+    {
+      "Location" : { "Lat": 22, "Long": 7, "Height": 11 },
+      "Destination" : { "Lat": 9, "Long": 3, "Height": 0 },
+      "AssetID": "HMH 3305",
+      "AssetType": "Honda Accord",
+      "Height": 12,
+      "Weight": 500,
+      "Width": 16,
+      "ValidZones": 3,
+      "AwayFromNodeMax": 50,
+      "Speed": 20
+    },
+    {
+      "Location" : { "Lat": 20, "Long": 22, "Height": 0 },
+      "Destination" : { "Lat": 7, "Long": 20, "Height": 0 },
+      "AssetID": "HMH 3305",
+      "AssetType": "Honda Accord",
+      "Height": 12,
+      "Weight": 500,
+      "Width": 16,
+      "ValidZones": 3,
+      "AwayFromNodeMax": 50,
+      "Speed": 45
+    }
+  ],
+  "RouteName": "Multi-Asset Route",
+  "AirportCode": "BOS",
+  "RouteID": "T5-G16",
+  "RouteDefaults" : {
+    "AssetLocation": { "Lat": 17, "Long": 12, "Height": 11 },
+    "RouteStart": { "Lat": 7, "Long": 16, "Height": 11 },
+    "RouteEnd": { "Lat": 17, "Long": 9, "Height": 11 },
+    "Destination": { "Lat": 13, "Long": 14, "Height": 0 },
+    "Speed": 30
+  },
+  "NodeDefaults" : {
+    "MaxSpeed": 40,
+    "MaxWeight": 5000,
+    "MaxHeight": 18,
+    "MaxWidth": 24
+  },
+  "OffCourse": 100,
+  "RouteOrigin": { "Lat": 4, "Long": 12, "Height": 10 },
+  "AssetLocation": { "Lat": 20, "Long": 22, "Height": 11 },
+  "Destination": { "Lat": 14, "Long": 6, "Height": 0 },
+  "AssetSpeed": 50
+}

@@ -1,0 +1,173 @@
+package server
+
+import (
+	//lgr "github.build.ge.com/AviationRecovery/go-logger.git"
+	//au "github.build.ge.com/AviationRecovery/go-oauth.git"
+	cl "github.build.ge.com/aviation-intelligent-airport/time-and-distance-svc.git/clients"
+
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"time"
+	"encoding/json"
+	"errors"
+	"strings"
+
+	//"github.com/codegangsta/negroni"
+	"github.com/gorilla/mux"
+	"net/http/pprof"
+)
+
+const AppKey = "VCAP_APPLICATION"
+const ServiceKey = "VCAP_SERVICES"
+
+const loggerName = "Server"
+
+var router *mux.Router
+
+const base_path = "/api/v1/"
+
+var response_path string
+var StartTime time.Time
+var OAUTH2_ENABLED = false
+
+func GetPredixSpace() (space string) {
+	var v map[string]string
+
+	vcap := os.Getenv("VCAP_APPLICATION")
+	if DEBUG { fmt.Println("DBG-> Vcap: ", vcap) }
+
+	err := json.Unmarshal([]byte(vcap), &v)
+	if err != nil {
+		log.Println(errors.New(fmt.Sprintf("ERROR: Could not convert Vcap Services json data")))
+	}
+
+	if (v != nil) {
+		space = v["space_name"]
+		if DEBUG { fmt.Println("DBG-> v: ", v) }
+	} else {
+		space = "unknown"
+	}
+
+	return
+}
+
+func AttachProfiler(router *mux.Router, oauth2_enabled bool) {
+	if oauth2_enabled {
+		router.PathPrefix("/debug/pprof").Handler(http.HandlerFunc(pprof.Index))
+		router.PathPrefix("/debug/pprof/cmdline").Handler(http.HandlerFunc(pprof.Cmdline))
+		router.PathPrefix("/debug/pprof/profile").Handler(http.HandlerFunc(pprof.Profile))
+		router.PathPrefix("/debug/pprof/symbol").Handler(http.HandlerFunc(pprof.Symbol))
+
+		// Manually add support for paths linked to by index page at /debug/pprof/
+		router.PathPrefix("/debug/goroutine").Handler(pprof.Handler("goroutine"))
+		router.PathPrefix("/debug/heap").Handler(pprof.Handler("heap"))
+		router.PathPrefix("/debug/threadcreate").Handler(pprof.Handler("threadcreate"))
+		router.PathPrefix("/debug/block").Handler(pprof.Handler("block"))
+
+	} else {
+		router.HandleFunc("/debug/pprof/", pprof.Index)
+		router.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+		router.HandleFunc("/debug/pprof/profile", pprof.Profile)
+		router.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+
+		// Manually add support for paths linked to by index page at /debug/pprof/
+		router.Handle("/debug/pprof/goroutine", pprof.Handler("goroutine"))
+		router.Handle("/debug/pprof/heap", pprof.Handler("heap"))
+		router.Handle("/debug/pprof/threadcreate", pprof.Handler("threadcreate"))
+		router.Handle("/debug/pprof/block", pprof.Handler("block"))
+	}
+}
+
+func GetResponsePath() string {
+	return response_path
+}
+
+func SetupRestServer() {
+
+	StartTime = time.Now().UTC()
+
+	if DEBUG { fmt.Println("Configuring REST Server Interface at ", StartTime.Format(time.RFC850)) }
+
+	// Register a handler for each route pattern
+	router = mux.NewRouter()
+
+	enable := os.Getenv("DISABLE_OAUTH")
+	if (strings.ToLower(enable) == "true" && strings.ToLower(GetPredixSpace()) == "ia-dev") { OAUTH2_ENABLED = false }
+
+	AttachProfiler(router, OAUTH2_ENABLED)
+
+	//if OAUTH2_ENABLED {
+	//	//  NOTE: the longer paths MUST come first since the router seems to take the first match regardless of length.
+	//	//  		Especially if there is a common part to the URL and the method is the same.
+	//	router.PathPrefix(base_path + "disrupted-flight/{getId}").Methods("GET").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(HandleGetId))))
+	//
+	//	router.PathPrefix(base_path + "disrupted-flight/{getId}").Methods("DELETE").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(HandleDeleteId))))
+	//
+	//	router.PathPrefix(base_path + "disrupted-flight").Methods("GET").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(HandleDisruptionSetQuery))))
+	//
+	//	router.PathPrefix(base_path + "disrupted-flight").Methods("POST").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(HandleDisruptionSet))))
+	//
+	//	router.PathPrefix(base_path + "cancellations").Methods("POST").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(HandleCancellationSet))))
+	//
+	//	router.PathPrefix(base_path + "debug/stats").Methods("GET").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(lgr.HandleStatsQuery))))
+	//
+	//	router.PathPrefix(base_path + "debug/stats").Methods("DELETE").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(lgr.HandleStatsDelete))))
+	//
+	//	router.PathPrefix(base_path + "debug/logs").Methods("GET").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(lgr.HandleLogsQuery))))
+	//
+	//	router.PathPrefix(base_path + "debug/logs").Methods("DELETE").Handler(
+	//		negroni.New(negroni.Handler(au.IsAuthenticated()), negroni.Wrap(http.HandlerFunc(lgr.HandleLogsDelete))))
+	//} else {
+	//	router.Methods("POST").Path(base_path + "disrupted-flight").HandlerFunc(HandleDisruptionSet)
+	//	router.Methods("POST").Path(base_path + "cancellations").HandlerFunc(HandleCancellationSet)
+	//	router.Methods("GET").Path(base_path + "disrupted-flight").HandlerFunc(HandleDisruptionSetQuery)
+	//	router.Methods("GET").Path(base_path + "disrupted-flight/{getId}").HandlerFunc(HandleGetId)
+	//	router.Methods("DELETE").Path(base_path + "disrupted-flight/{getId}").HandlerFunc(HandleDeleteId)
+	//
+	//	router.Methods("GET").Path(base_path + "debug/stats").HandlerFunc(lgr.HandleStatsQuery)
+	//	router.Methods("DELETE").Path(base_path + "debug/stats").HandlerFunc(lgr.HandleStatsDelete)
+	//	router.Methods("GET").Path(base_path + "debug/logs").HandlerFunc(lgr.HandleLogsQuery)
+	//	router.Methods("DELETE").Path(base_path + "debug/logs").HandlerFunc(lgr.HandleLogsDelete)
+	//}
+
+	// Add a trivial handler for INFO
+	router.Methods("GET").Path(base_path + "info").HandlerFunc(HandleInfo)
+	router.Methods("GET").Path(base_path + "ping").HandlerFunc(HandlePing)
+
+}
+
+func StartRestServer() {
+
+	// Get Cloud Foundry assigned port
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Println("Port number is invalid")
+		port = "8080"
+	}
+
+	uri := cl.GetServiceHostName("routemgr_url")
+	if uri == "" {
+		response_path = "localhost:" + port + base_path
+	} else {
+		response_path = uri + base_path
+	}
+
+	if DEBUG { fmt.Println("Starting REST Server Interface for", uri) }
+	if DEBUG { fmt.Printf("response_path = %s\n", response_path) }
+	if DEBUG { fmt.Printf("Port = 0x%s\n", port) }
+
+	// Start listening on the configured port.
+	// ListenAndServe is not expected to return, so we wrap it in a log.Fatal
+	log.Fatal(http.ListenAndServe(":"+port, router))
+
+}
