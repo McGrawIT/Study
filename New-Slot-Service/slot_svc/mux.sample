@@ -1,0 +1,135 @@
+package slot_svc
+
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+@502612370
+Unwatch 24
+Star 0
+Fork 0 AviationRecovery/disruption-cost-service
+Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
+Branch: jackman-rmq-re… Find file Copy pathdisruption-cost-service/main.go
+0270697  15 days ago
+@502669306 502669306 config file name correction.
+1 contributor
+RawBlameHistory     116 lines (93 sloc)  3.39 KB
+package main
+
+import (
+"fmt"
+"github.build.ge.com/AviationRecovery/disruption-cost-service/clients"
+"github.build.ge.com/AviationRecovery/disruption-cost-service/config"
+"github.build.ge.com/AviationRecovery/go-oauth"
+"github.com/gorilla/mux"
+"log"
+"net/http"
+"os"
+"strconv"
+"strings"
+"time"
+)
+
+const basePath = "/api/v1/"
+
+var (
+responsePath string
+startTime    time.Time
+oauthEnabled = true
+)
+
+func main() {
+
+log.Println("[----------------------------------]")
+log.Println("[ Starting Disruption Cost Service ]")
+log.Println("[----------------------------------]")
+
+err := config.LoadFromEnvironment()
+if err != nil {
+//log.Fatal(err)
+log.Println("The service failed to load its configuration from VCAP.")
+log.Println("Attempting to load the configuration from file, instead.")
+log.Println("config.LoadFromFile()")
+err = config.LoadFromFile("disruption-cost-service.config.json")
+if err != nil {
+log.Println(err)
+log.Println("The service failed to load its configuration from file.")
+log.Println("This failure is not recoverable. Please check your configuration sources.")
+os.Exit(1)
+}
+}
+
+go config.WatchConfiguration()
+
+initializeProcessing()
+
+startTime = time.Now().UTC()
+
+port := os.Getenv("PORT")
+if port == "" {
+port = "8080"
+}
+
+// This is required for some of the REST calls.
+uri := clients.GetServiceHostName("passenger_welfare_cost_url")
+if uri == "" {
+responsePath = "localhost:" + port + "/"
+} else {
+responsePath = uri + basePath
+}
+
+enable := os.Getenv("DISABLE_OAUTH")
+space := strings.ToLower(clients.GetPredixSpace())
+if strings.ToLower(enable) == "true" && space != "oo-prod" && space != "" {
+oauthEnabled = false
+}
+
+router := mux.NewRouter()
+router.Path("/").Methods("GET").Handler(authHandler(handlePingGet))
+api := router.PathPrefix(basePath).Subrouter()
+api.Path("/config/costs").Methods("GET").Handler(authHandler(handleCostsGet))
+api.Path("/config/costs").Methods("PUT", "POST").Handler(authHandler(handleCostsPost))
+api.Path("/config/costs/{station}").Methods("GET").Handler(authHandler(handleStationCostsGet))
+api.Path("/config/costs/{station}").Methods("PUT", "POST").Handler(authHandler(handleStationCostsPost))
+api.Path("/config/fares").Methods("GET").Handler(authHandler(handleFaresGet))
+api.Path("/ping").Methods("GET").Handler(authHandler(handlePingGet))
+
+// Start listening on the configured port.
+// ListenAndServe is not expected to return, so we wrap it in a log.Fatal
+log.Fatal(http.ListenAndServe(":"+port, router))
+
+}
+
+// This handler wrapper is derived from OAuth2.IsAuthenticated()
+type authHandler func(http.ResponseWriter, *http.Request) error
+
+func (fn authHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+if oauthEnabled {
+statusCode, err := OAuth2.CheckAuthentication(r)
+if statusCode != http.StatusOK {
+ct := r.Header.Get("Content-Type")
+
+//Handle the different response codes appropriately
+w.WriteHeader(statusCode)
+
+if strings.Contains(strings.ToLower(ct), "json") {
+w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+fmt.Fprintf(w, "{ \"authentication-status-code\" : "+strconv.Itoa(statusCode)+",")
+fmt.Fprintf(w, "\"authentication-error\" : \""+err+"\" }")
+} else {
+w.Header().Set("Content-Type", "plain/text")
+fmt.Fprintf(w, "Authentication Status Code: "+strconv.Itoa(statusCode))
+fmt.Fprintf(w, "\nAuthentication Error: "+err)
+}
+
+return
+}
+}
+
+fn(w, r)
+}
+API Training Shop Blog About
+© 2017 GitHub, Inc. Help Support

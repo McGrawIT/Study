@@ -1,0 +1,281 @@
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+type	person 		struct {
+
+		age	int
+		exp	int
+}
+
+type	pullerWork 	struct {
+
+		puller		int			// Puller
+		cPulls		int			// Total Pulls on Channel C
+		dPulls		int			// Total on D
+}
+
+func main() {
+
+	j := 0
+
+	if j > 0 { people () }
+
+	c := make ( chan int, 1000 )
+	d := make ( chan int, 1000 )
+	stopper := make ( chan pullerWork )
+
+	fmt.Println ( "Starting" )
+
+	lenQ := 100
+	loadQ ( c, d, lenQ )
+
+	fmt.Println ( "Queues c, d loaded." )
+
+	go pullQ( c, d, stopper, 1, lenQ )
+	go pullQ( c, d, stopper, 2, lenQ )
+	go pullQ( c, d, stopper, 3, lenQ )
+	go pullQ( c, d, stopper, 4, lenQ )
+
+	fmt.Println ( "Pullers started." )
+
+	doneWorking := []pullerWork {}
+
+	one, two, three, four := false, false, false, false
+	for {
+
+		donePuller := <- stopper
+
+		doneWorking = append ( doneWorking, donePuller )
+
+		switch donePuller.puller {
+		case 1: one = true
+		case 2: two = true
+		case 3: three = true
+		case 4: four = true
+		}
+
+		if one && two && three && four {
+
+			fmt.Println ( "All waits received: stopping now" )
+
+			cTotal, dTotal := 0, 0
+
+			for _, pullerStats := range doneWorking {
+
+				fmt.Println ( "Puller", pullerStats.puller, "C Pulls", pullerStats.cPulls )
+				cTotal = cTotal + pullerStats.cPulls
+			}
+			for _, pullerStats := range doneWorking {
+
+				fmt.Println ( "Puller", pullerStats.puller, "D Pulls", pullerStats.dPulls )
+				dTotal = dTotal + pullerStats.dPulls
+			}
+			for _, pullerStats := range doneWorking {
+
+				pullerPulls := pullerStats.cPulls + pullerStats.dPulls
+				fmt.Println( "Puller", pullerStats.puller, "pulled", pullerPulls, "total pulls")
+			}
+
+			fmt.Println( "C Pulls:", cTotal )
+			fmt.Println( "D Pulls", dTotal )
+			break
+
+		} else { continue }
+	}
+
+	fmt.Println( "Very much done...")
+}
+
+func ( u *person ) last ( age, exp int ) ( int ) {
+
+	return age * ( exp / 2 )
+}
+
+func pullQ ( c, d chan int, stopper chan pullerWork, puller, lenQ int ) {
+
+	cPulled := []int{}
+	dPulled := []int{}
+
+	pullStats := pullerWork{}
+	pullStats.puller = puller
+
+	picker := 0
+	pulls := 0
+
+	totalPulls := 0
+
+	tries := 0
+
+	consecutiveTries := 0
+
+	for {
+
+		totalPulls = pulls
+
+		breakNow := 0
+
+		if picker == 0 {
+
+			randomWait := rand.Intn ( 3 )
+			waitTime := time.Duration( randomWait )
+			time.Sleep( waitTime * time.Second )
+
+			for cValue := range c {
+
+				breakNow++
+				pulls++
+
+				cPulled = append(cPulled, cValue)
+				if breakNow > 8 * randomWait { break }
+			}
+			cPulls := len ( cPulled )
+			pullStats.cPulls = pullStats.cPulls + cPulls
+
+			if cPulls > 0 { fmt.Println( "Puller:", puller, "(", breakNow, ")", "C:", cPulls, cPulled ) }
+
+			picker = 1
+
+		} else {
+
+			randomWait := rand.Intn ( 3 )
+
+			waitTime := time.Duration( randomWait )
+			time.Sleep( waitTime * time.Second )
+
+			for dValue := range d {
+				breakNow++
+				dPulled = append( dPulled, dValue)
+				if breakNow > 8 * randomWait { break }
+				pulls++
+			}
+			dPulls := len ( dPulled )
+			pullStats.dPulls = pullStats.dPulls + dPulls
+
+			if dPulls > 0 { fmt.Println( "Puller:", puller, "D:", dPulls, dPulled ) }
+			picker = 0
+		}
+
+		cPulled = []int{}
+		dPulled = []int{}
+
+		if totalPulls == pulls {
+
+			consecutiveTries++
+			tries++
+
+		} else {
+
+			fmt.Println ( puller, "pulled", pulls, "elements so far." )
+			consecutiveTries = 0
+		}
+
+		if consecutiveTries > 6 {
+
+			stopper <- pullStats
+			fmt.Println ( puller, "pulled nothing", tries, "times" )
+			break
+		}
+
+	}
+}
+
+func loadQ ( c, d chan int, lenQ int ) {
+
+	fmt.Println ( "Loadeding Qs" )
+
+	for i := 1; i < lenQ; i++ { c <- i }
+	close ( c )
+
+	fmt.Println ( "Loaded one." )
+
+	for i := 1 ; i < lenQ; i++ { d <- i }
+	close ( d )
+
+	fmt.Println ( "Loaded both" )
+}
+
+func applyFactor ( cin, cout, stopNow chan int ) {
+
+	val := 0
+	factor := 1
+
+	for {
+		val = <- cin
+		if val == 0 {
+
+			stopNow <- 0
+			break
+		}
+		factor = factor + val
+
+		cout <- val * factor
+
+		fmt.Println ( "Applied Factor", factor, "to:", val, "and returned:", val * factor )
+	}
+}
+
+func sendValue ( factored, addFactor chan int ) {
+
+	val  := 1
+	valFactored := 0
+
+	for {
+		addFactor <- val
+
+		fmt.Println ( "Sent:", val, "to be factored" )
+
+		valFactored = <- factored
+
+		fmt.Println ( "Received:", valFactored )
+
+		val = valFactored * 3
+
+		if val > 10000 { break }
+
+	}
+	addFactor <- 0
+}
+
+func people() {
+
+	her := person {}
+
+	age := 22
+	factor := 24
+
+	fmt.Println( her.last ( age, factor ) )
+
+	inChan := make ( chan int )
+	outChan := make ( chan int )
+	stopNow := make ( chan int )
+
+	go sendValue ( inChan, outChan )
+
+	fmt.Println ( "Laucnehd Sender" )
+
+	go applyFactor ( outChan, inChan, stopNow )
+
+	fmt.Println ( "Launched factorer" )
+
+	wait := <- stopNow
+	fmt.Println ( "Wait received:", wait, "stopping now" )
+}
+
+type Rectangle struct {
+
+
+	width 	int
+	height 	int
+}
+
+func	oo ( r Rectangle ) {
+
+	r	:= Rectangle{ width: 5, height: 12 }
+	fmt.Println( "Area of", r, "is", r.Area() )
+}
+func	( r *Rectangle ) Area() ( int ) { return	r.width * r.height }

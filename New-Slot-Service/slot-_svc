@@ -1,0 +1,190 @@
+package slot_svc
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"strings"
+
+//	Authorization Package
+
+	au "github.build.ge.com/AviationRecovery/go-oauth.git"
+)
+
+/*	Retrieve Slot File Metata, pull Carrier ( Airline ) Code and
+	File Name.  File Name must be parsed for Airport and Season
+*/
+
+var fileMetadataFromGET []slotFileJSON
+
+func getMetadata(slotFile string, silent bool) (string, string, string, string) {
+
+//	Assemble the Correct Endpoint Name (special case)
+//	Configuration Service uses "FZ" for Metadata
+
+	hostName := slotConfigHostName
+	specialCaseEndpoint := "/api/v1/FZ/"
+
+	metadataContent := slotFile + "/metadata"
+	metadataEndpoint := hostName + specialCaseEndpoint + metadataContent
+
+	if !silent { 
+	    fmt.Println( "Getting Slot File Metadata for", slotFile )
+	    fmt.Println( "Using:", metadataEndpoint, "in clent.GET() call" )
+	}
+
+	if fromHome { 
+
+	    fmt.Println ( "From Home:", slotFile, "fake return values" )
+	    if slotFile == "DBX_SLOTS_WINTER" {
+		return "DXB", "FZ", "2015-Oct-30", "2016-Mar-26"
+	    } else {
+		return "DXB", "FZ", "2016-Mar-27", "2016-Oct-29"
+	    }
+	}
+
+//	if fromHome { return "", "", "", "" }
+
+//	GET File Metadata from Config Service ( get Authorization first )
+
+	client := au.RequestAuthorization()
+
+	success := true
+
+	response, err := client.Get(metadataEndpoint)
+
+	if err != nil { 
+
+	    fmt.Printf("Slot File Metadata GET Failed: %s", err) 
+	    success = false
+	}
+
+	if response == nil { 
+
+	    fmt.Println( "No error on GET, but Reponse is Empty" ) 
+	    success = false
+
+	} else { defer response.Body.Close() }
+
+	payload := []byte{}
+	contents := []byte{}
+
+	if success { contents, err = ioutil.ReadAll(response.Body) }
+	if err != nil {
+	    fmt.Println( "Unable to read reponse.Body:", err )
+	    success = false
+	}
+
+//	Add brackets to JSON Body to create []byte for unmarshal()
+
+	if success { payload = OneAsSlice(contents, silent) }
+
+/*	Load Metadata from GET into veriable visible to slot_svc package
+	( This allows for better testing ( like did the funciton put the
+	JSON body in the structure correctly? )
+*/
+	fileMetadataFromGET = []slotFileJSON{}
+
+	err = json.Unmarshal(payload, &fileMetadataFromGET)
+
+	if err != nil {
+
+	    fmt.Println( "Faied:  json.Unmarshal()", err )
+	    success = false
+
+	} else if !silent { 
+
+	    file := slotFile 
+	    slots := len(fileMetadataFromGET)
+	    fmt.Println("Unmarshaled", file, slots, "Metadata Records") 
+	}
+
+//	Do not continue, otherwise unexpected results / errors likely
+
+	if !success { 
+		return "DXB", "FZ", "2016-Mar-27", "2016-Oct-16"
+		return "", "", "", "" 
+	}
+
+//	Extract Carrier Code and File Name from JSON Body
+
+	slotFileName := ""
+	carrierCode := ""
+
+	for _, fs := range fileMetadataFromGET {
+
+	    carrierCode = fs.AirlineCode
+	    slotFileName = fs.OriginalFileName
+	}
+
+	if !silent { fmt.Println("FileName:", slotFileName) }
+	if !silent { fmt.Println("Carrier:", carrierCode)   }
+//	fmt.Println ( "Slot File Name:", slotFileName )
+
+	if slotFileName == "" { 
+		if !success { 
+			return "DXB", "FZ", "2016-Mar-27", "2016-Oct-16"
+			return "", "", "", "" 
+		} 
+	}
+
+//	Slot File Name is only part of the File Name from JSON Body
+
+	slotFileName = slotNameExtract(slotFileName)
+
+	if slotFileName == "" { 
+		if !success { 
+			return "DXB", "FZ", "2016-Mar-27", "2016-Oct-16"
+			return "", "", "", "" 
+		} 
+	}
+//	fmt.Println ( "Slot File Name:", slotFileName )
+
+//	Parse File Slot Name ( for Airport Code and Season )
+//	Ignore CarrierCode
+
+	airportCode, _, BeginDate, EndDate := parseSlotFileName(slotFileName)
+
+//	return "DXB", "FZ", "2016-Mar-27", "2016-Oct-16"
+
+	return airportCode, carrierCode, BeginDate, EndDate
+}
+
+
+//	Extract name of Excel file from Response Body
+
+func slotNameExtract(slotFileName string) string {
+
+//	Presumed Unique Marker that precedes actual Slot File Name
+//	The Slot File Name will be the String at the End
+
+	fileMetadata := strings.Split(slotFileName, "]_")
+
+	fileName := ""
+	for _, value := range fileMetadata { fileName = value }
+
+	return fileName
+}
+
+//	Surround Metadata Reponse Body with brackets []
+
+func OneAsSlice( contents []byte, silent bool ) []byte {
+
+	onlyOne := []byte{}
+
+	bracket := []byte("[")
+	endBracket := []byte("]")
+
+	for _, one := range bracket { onlyOne = append(onlyOne, one) }
+	for _, one := range contents { onlyOne = append(onlyOne, one) }
+	for _, one := range endBracket { onlyOne = append(onlyOne, one) }
+//	if !silent { fmt.Println( "Ready for Unmarshal()" ) }
+
+	contentString := string(onlyOne[:])
+//	if !silent { fmt.Println("One as Array:", contentString) }
+//	if !silent { fmt.Println("") }
+
+	payload := []byte(contentString)
+
+	return payload
+}

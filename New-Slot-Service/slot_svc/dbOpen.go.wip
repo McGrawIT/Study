@@ -1,0 +1,58 @@
+package slot_svc
+
+import (
+	"database/sql"
+	"fmt"
+	//_ "pq"
+	//"os"
+	"strconv"
+)
+
+var DB_initialized = false
+var Database *sql.DB
+
+
+func OpenSlotFileDB () {
+
+	var db_url = ""
+
+	//	database_name := "public"
+
+	db_url = "user=postgres password=postgres dbname=postgres sslmode=disable"
+
+
+	db, err := sql.Open("postgres", db_url)
+	if err != nil {
+		fmt.Println ( "DB Open Failed")
+	}
+
+	Database = db
+	DB_initialized = true
+
+
+	//  configure database pooling
+	mconns := "1"
+	maxconns := 20
+	if mconns != "" {
+		maxconns, _ = strconv.Atoi(mconns)
+	}
+
+	SetMaxIdleConns(1)
+	SetMaxOpenConns(maxconns)
+
+	fmt.Println("Database Connection Established")
+
+	//  verify that the table(s) exist and are in the correct format
+	//	VerifyTables()
+
+}
+
+func CloseSlotFileDB () {
+
+	fmt.Println("Closing Database Connections")
+
+	if DB_initialized {
+		Database.Close()
+		DB_initialized = false
+	}
+}

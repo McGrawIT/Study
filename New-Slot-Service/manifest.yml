@@ -1,0 +1,29 @@
+---
+applications:
+- name: aviation-dca-slot-svc
+  memory: 256M
+  instances: 1
+  disk_quota: 250M
+  command: /app/bin/slot-service.git
+  buildpack : https://github.com/cloudfoundry/go-buildpack.git
+  services:
+     - flydubai-logstash
+     - flydubai-airports-db
+     - aviation-dca-services
+     - aviation-dca-slot-svc-blobstore
+  env:
+    # To avoid the risk of committing secret keys to Github, do not set
+    # these here. Update them using "cf set-env" after pushing your app
+    # to Cloud Foundry.
+    CONFIG_URL: config_url
+    SLOT_URL: slot_url
+  #  UAA_CLIENT_ID:     [resource_server_client_id]
+  #  UAA_CLIENT_SECRET: [resource_server_client_secret]
+
+     # UAA_HOST_NAME: a8a2ffc4-b04e-4ec1-bfed-7a51dd408725.predix-uaa.run.aws-usw02-pr.ice.predix.io
+    CONFIG_SERVICE: https://aviation-dca-config-svc.run.aws-usw02-pr.ice.predix.io
+    # SERVICE_ENDPOINTS : /api/vi/fz/
+    SEASON_SUMMER : DBX_SLOTS_SUMMER
+    SEASON_FALL : DBX_SLOTS_FALL
+    SEASON_WINTER : DBX_SLOTS_WINTER
+    SEASON_SPRING : DBX_SLOTS_SPRING

@@ -1,0 +1,59 @@
+{
+	"ImportPath": "github.build.ge.com/AviationRecovery/slot-service.git",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v70",
+	"Deps": [
+		{
+			"ImportPath": "github.build.ge.com/AviationRecovery/blobstore-support-go",
+			"Rev": "48a4f9a507f8de1556a93ae4ca03d7427532d4c5"
+		},
+		{
+			"ImportPath": "github.build.ge.com/AviationRecovery/go-oauth.git",
+			"Rev": "7fba0d1cbc65e2d6e46c102a25677d95a5436e30"
+		},
+		{
+			"ImportPath": "github.build.ge.com/aviation-predix-common/vcap-support",
+			"Comment": "v0.0.2-3-g850ab69",
+			"Rev": "850ab69deff00a53fe94dd2cda3877b583cbf35b"
+		},
+		{
+			"ImportPath": "github.build.ge.com/aviation-predix-common/vcap-support.git",
+			"Rev": "ad8764ee58b8ed8c6a36bce1fee7353a2551d2a6"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/negroni",
+			"Comment": "v0.2.0-44-gfeacfc5",
+			"Rev": "feacfc52d357c844f524c794947493483ed881b3"
+		},
+		{
+			"ImportPath": "github.com/dgrijalva/jwt-go",
+			"Comment": "v3.0.0-4-g01aeca5",
+			"Rev": "01aeca54ebda6e0fbfafd0a524d234159c05ec20"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go",
+			"Comment": "1.0.1-65-g7f5706b",
+			"Rev": "7f5706b303743c9b9c5f4ad251cf6e9a4f2cb85e"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "c4c3ea71919de159c9e246d7be66deb7f0a39a58"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2",
+			"Rev": "c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2/clientcredentials",
+			"Rev": "c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2/internal",
+			"Rev": "c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2/jws",
+			"Rev": "c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10"
+		}
+	]
+}
