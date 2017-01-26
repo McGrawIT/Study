@@ -27,7 +27,7 @@ func db() (*sql.DB, error) {
 }
 
 // I'd prefer not to have this.
-// In the future, let's look at Dwayne's method of updating the tables dynmaically.
+// In the future, let's look at Dwayne's method of updating the tables dynamically.
 // Or hire a DBA that's willing to work around the Predix DB administration obstacles.
 func Recreate() error {
 	db, err := db()

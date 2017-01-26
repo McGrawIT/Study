@@ -56,6 +56,29 @@ func main() {
 		}
 	}
 
+/*
+	Likely Endpoints?
+
+	"Register" Callbacks ( Let Solace know endpoints for each Content Type ( Weather, Cancels, Airport Stats, ... )
+	This is one endpoint for registering the function that handles the specific GET
+	OR, does each "GET" provide the callback?  ( Per request versus by content type )
+
+	"Retrieve" ( One for each Content Type ( what a registered callback will handle the Response Body )
+
+		GET Weather
+		GET Airline Performance
+		GET Flight Data
+
+	**	Content Data Models ( one per Response Body )
+		Not the endpoint, but the expected return structure
+
+		What data to we start with?
+		What are the Sources w/i SWIM?
+		What is the structure of that data?
+
+	"Establish Connection" ( Client opens connections?  Identify yourself to Solace SWIM? )
+ */
+
 	// Register a handler for each route pattern
 	router := mux.NewRouter()
 
@@ -71,6 +94,8 @@ func main() {
 	if strings.ToLower(disable_oauth) == "true" && strings.ToLower(util.GetPredixSpace()) == "ia-dev" {
 		OAUTH2_ENABLED = false
 	}
+
+//	Do we need the same authorizations as Fly Dubai?
 
 	attachProfiler(router, OAUTH2_ENABLED)
 
