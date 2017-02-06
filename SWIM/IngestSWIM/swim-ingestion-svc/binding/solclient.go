@@ -7,6 +7,13 @@ import "unsafe"
 #cgo LDFLAGS: -L ${SRCDIR}/solclient/lib -lsolclient
 #include "solclient.h"
 #include <stdlib.h>
+
+
+	int solClient_session_create();
+	int solClient_session_connect();
+	tin solClient_session_disconnect();
+	int solClient_session_destroy();
+
 */
 
 /*	The question is the "include" that gets this C code to "connect" to the Solace APISs
@@ -51,12 +58,116 @@ const (
 
 	Once a Session is created, it must be connected.
  */
-func SessionCreateConnect () {
+
+/*	Creates a new Session within a specified Context.
+
+	solClient_dllExport solClient_returnCode_t solClient_session_create	(
+
+		solClient_propertyArray_pt 				props,
+		solClient_opaqueContext_pt 				opaqueContext_p,
+		solClient_opaqueSession_pt * 			opaqueSession_p,
+		solClient_session_createFuncInfo_t * 	funcInfo_p,
+		size_t 									funcInfoSize
+	)
+
+	When processing the property list, the API will not modify any of the strings pointed to by props.
+	Parameters:
+
+	props 				An array of name/value string pair pointers to configure session properties.
+	opaqueContext_p 	The Context in which the Session is to be created.
+	opaqueSession_p 	An opaque Session pointer is returned that refers to the created Session.
+	funcInfo_p 			A pointer to a structure that provides information on callback functions for events and received messages.
+	funcInfoSize 		The size (in bytes) of the passed-in funcInfo structure to allow the structure to grow in the future.
+
+	The session properties are supplied as an array of name/value pointer pairs, where the name and
+	value are both strings. Only configuration property names starting with "SESSION_" are processed;
+	other property names are ignored. Any values not supplied are set to default values. When the
+	Session is created, an opaque Session pointer is returned to the caller, and this value is then
+	used for any Session-level operations (for example, sending a message). The passed-in structure
+	functInfo_p provides information on the message receive callback function and the Session event
+	function which the application has provided for this Session. Both of these callbacks are mandatory.
+	The message receive callback is invoked for each received message on this Session. The Session event
+	callback is invoked when Session events occur, such as the Session going up or down. Both callbacks
+	are invoked in the context of the Context thread to which this Session belongs. Note that the property
+	values are stored internally in the API and the caller does not have to maintain the props array
+	or the strings that are pointed to after this call completes.
+
+	Returns:
+
+	SOLCLIENT_OK, SOLCLIENT_FAIL
+	SubCodes (Unless otherwise noted above, subcodes are only relevant when this function returns SOLCLIENT_FAIL):
+	SOLCLIENT_SUBCODE_OUT_OF_RESOURCES - The maximum number of Sessions already created for Context (refer to SOLCLIENT_CONTEXT_PROP_MAX_SESSIONS).
+
+ */
+func SessionCreateConnect ( propertyArray_pt 			props,
+opaqueContext_pt 			opaqueContext_p,
+opaqueSession_pt * 			opaqueSession_p,
+session_createFuncInfo_t * 	funcInfo_p,
+size_t 						funcInfoSize ) {
+
+	status := solClient_session_create( propertyArray_pt, opaqueContext_pt, opaqueSession_pt, session_createFuncInfo_t, size_t )
+
+	if status != SOLCLIENT_OK {
+
+	}
+
+/*
+	Define any "flows" for the Session  ( Does this define message flows? )
+ */
+	status = SessionFlow()
 
 
-	solClient_session_create()
+//	Session Created; Connect to it
+
 	solClient_session_connect()
 }
+
+/*
+	Flow characteristics and behavior are defined by Flow properties. The Flow properties are supplied
+	as an array of name/value pointer pairs, where the name and value are both strings.
+
+	FLOW and ENDPOINT configuration property names are processed; other property names are ignored.
+	If the Flow creation specifies a non-durable endpoint, ENDPOINT properties can be used to change the
+	default properties on the non-durable endpoint. Any values not supplied are set to default values.
+
+	When the Flow is created, an opaque Flow pointer is returned to the caller, and this value is then
+	used for any Flow-level operations (for example, starting/stopping a Flow, getting statistics,
+	sending an acknowledgment). The passed-in structure functInfo_p provides information on the message
+	receive callback function and the Flow event function which the application has provided for this Flow.
+	Both of these callbacks are mandatory. The message receive callback is invoked for each received message
+	on this Flow. The Flow event callback is invoked when Flow events occur, such as the Flow going up or down.
+	Both callbacks are invoked in the context of the Context thread to which the controlling Session belongs.
+ */
+
+/*
+	solClient_dllExport solClient_returnCode_t solClient_session_createFlow	(
+
+		solClient_propertyArray_pt 			props,
+		solClient_opaqueSession_pt 			opaqueSession_p,
+		solClient_opaqueFlow_pt * 			opaqueFlow_p,
+		solClient_flow_createFuncInfo_t * 	funcInfo_p,
+		size_t 								funcInfoSize
+	)
+
+
+	props 				An array of name/value string pair pointers to configure Flow properties.
+	opaqueSession_p 	The Session in which the Flow is to be created.
+	opaqueFlow_p 		The returned opaque Flow pointer that refers to the created Flow.
+	funcInfo_p 			A pointer to a structure that provides information on callback functions for events and received messages.
+	funcInfoSize 		The size of the passed-in funcInfo structure (in bytes) to allow the structure to grow in the future.
+
+ */
+
+func SessionFlow () {
+
+	status := solClient_session_createFlow	()
+
+	if status != SOLCLIENT_OK {
+
+	}
+}
+
+
 
 func SessionClose () {
 
