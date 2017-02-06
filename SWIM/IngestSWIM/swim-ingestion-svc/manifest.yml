@@ -1,0 +1,14 @@
+---
+applications:
+- name: aviation-ia-configuration-manager-svc
+  memory: 1G
+  instances: 1
+  disk_quota: 512M
+  command: /app/bin/configuration-manager-svc
+  buildpack : https://github.com/cloudfoundry/go-buildpack
+  services:
+    - aviation-ia-common-services
+    - aviation-ia-configuration-manager-pg
+  env:
+    DB_POSTGRES_NAME: aviation-ia-configuration-manager-pg
+    MAX_DB_CONNECTIONS: 40
